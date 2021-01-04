@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue.set</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue.set</h1>
+    <div id="app">
+        <p> {{count}} </p>
+        <ul>
+            <li  v-for="(item, index) in arr" :key="index">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+
+    <p>
+        <button onclick="addcount()">Add</button>
+    </p>
+    <script type="text/javascript">
+
+       function addcount(){
+        //    app.count++;
+        //    outdata.count ++;
+        // Vue.set(outdata,"count","3")
+        //   outdata.arr[2] = "weex";
+        Vue.set(outdata.arr,2,"Weex");
+       }
+       var outdata = {
+           count:1,
+           arr:['ios','flutter','react','vue']
+       }
+       var app = new Vue({
+           el:"#app",
+           data:outdata
+       })
+    </script>
+</body>
+</html>

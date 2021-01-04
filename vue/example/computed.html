@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello Vue2.0</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue computed</h1>
+    <div id="app">
+        电视价格：{{newPrice}}
+    </div>
+    <script type="text/javascript">
+       var app = new Vue({
+           el:"#app",
+           data:{
+               price:2999
+           },
+        //  1 对原始数据加工，避免污染原始数据
+           computed:{
+               newPrice:function(){
+                  return this.price + "￥" 
+               }
+           }
+       })
+    </script>
+</body>
+</html>

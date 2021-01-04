@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello Vue2.0</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-model 数据双向绑定</h1>
+    <div id="app">
+        <span v-text="inputStr"></span>
+        <hr>
+        <input type="text"  v-model="inputStr">
+        <hr>
+        lazy <input type="text"  v-model.lazy="inputStr">
+        <hr>
+        number <input type="text" v-model.number="inputStr">
+        <hr>
+        trim <input type="text" v-model.trim="inputStr">
+      <hr>
+      <h3>文本域</h3>
+       <textarea name="" id="" cols="30" rows="10" v-model="inputStr"></textarea>
+      <hr>
+      <h3>勾选绑定</h3>
+      <input type="checkbox" id="yesorno" v-model="isSelected">
+      <label for="yesorno">{{isSelected}}</label>
+      <hr>
+      <h3>多选绑定数组</h3>
+      <input type="checkbox" id="ios" value="ios" v-model="programes">
+      <label for="ios">ios</label>
+      <input type="checkbox" id="flutter" value="flutter" v-model="programes">
+      <label for="flutter">flutter</label>
+      <input type="checkbox" id="vue" value="vue" v-model="programes">
+      <label for="vue">vue</label>
+      <input type="checkbox" id="react" value="react" v-model="programes">
+      <label for="react">react</label>
+      <br>
+      <span v-text="programes"></span>
+      <br>
+      <h3>单选框</h3>
+      <input type="radio" id="man" value="男" v-model="sex">
+      <label for="man">男</label>
+      <br>
+      <input type="radio" id="feman" value="女" v-model="sex">
+      <label for="feman">女</label>  
+      <br>
+      选择性别为：{{sex}}
+    </div>
+    <script type="text/javascript">
+       var app = new Vue({
+           el:"#app",
+           data:{
+               inputStr:"hello world",
+               isSelected:true,
+               programes:[],
+               sex:"男"
+           }
+       })
+    </script>
+</body>
+</html>

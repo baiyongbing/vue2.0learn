@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 第二季</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <bytebai :city="citydata"></bytebai>
+    </div>
+    <script type="text/javascript">
+        var subcomponent = {
+           template:`<p style="color: blue;">万科未来城</p>`
+        }
+        // 外部声明组件
+        var componentbai = {
+            template:
+            `<div style="color: red;">
+                Bytebai come frome {{city}}
+             <hr>  
+             <estate></estate>
+             </div>`,
+            props:[
+                'city'
+            ],
+            // 组件于子组件嵌套
+            components:{
+               'estate':subcomponent
+            }  
+        }
+        var app = new Vue({
+            el:'#app',
+            data:{
+               citydata:'QingDao China'
+            },
+            // 内部组件关联
+            components:{
+              'bytebai':componentbai
+            }
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if-else-show</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-if v-show</h1>
+    <div id="app">
+        <div v-if="vueif">Hello 王路飞</div>
+        <div v-else>你好 请打开海贼王</div>
+        <div v-show="vueshow">Hope is a good thing maybe the best thing in this world</div>
+    </div>
+    <script type="text/javascript">
+       var app = new Vue({
+           el:"#app",
+           data:{
+            //    message:"are you you maobing"
+            vueif:false,
+            vueshow:true
+           }
+       })
+    </script>
+
+</body>
+</html>

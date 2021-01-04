@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 2.0 第三季</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       num is {{count}}
+       <br>
+        <!--  1 methods传参  -->
+        <!-- 2 event 使用 -->
+       <button v-on:click="addcount(24,$event)">Add Count</button>
+       <br>
+        <!-- 3 组件条用方法需要添加native -->
+       <bytebai @click.native="addcount(1)"></bytebai>
+    </div>
+    <!-- 4 外部调用 vue 的方法 -->
+    <button onclick="app.addcount(5)">外部点击</button>
+    
+    <script type="text/javascript">
+         var bytebai = {
+             template:`<button>组件使用点击方法</button>`,
+         }
+         var app = new Vue({
+             el:'#app',
+             data:{
+                 count:0,
+             },
+             components:{
+                 'bytebai':bytebai
+             },
+             methods: {
+                 addcount:function(num,event){
+                     this.count += num;
+                     console.log(event);
+                 }
+             },
+         })
+
+    </script>
+</body>
+</html>

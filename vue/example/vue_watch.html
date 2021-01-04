@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello Vue2.0</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue Watch </h1>
+    <div id="app">
+        <p>温度 {{temp}}</p>
+        <p>建议 {{advice}}</p>
+        <br>
+        <button v-on:click="addTemp(2)">升高温度</button>
+        <button @click="subTemp(2)">减低温度</button>
+    </div>
+    <script type="text/javascript">
+       var app = new Vue({
+           el:"#app",
+           data:{
+              temp:12,
+              advice:'穿外套 秋裤'               
+           },
+           methods: {
+               addTemp:function(level){
+                  this.temp += level
+               },
+               subTemp:function(level){
+                  this.temp -= level
+               }
+           },
+        //    内部监听
+        //    watch:{
+        //        temp:function(newVal,oldVal){
+        //            if (newVal > 35) {
+        //                this.advice = '短裤 T恤';
+        //            }else if (newVal > 20) {
+        //                this.advice='穿长袖 长裤';             
+        //            }else if (newVal > 10) {
+        //                this.advice='穿外套 秋裤';             
+        //            }else{
+        //             this.advice='羽绒服 大衣';             
+        //            }
+        //        }
+        //    }
+       }
+       )
+    //    外部监听
+     app.$watch('temp',function(newVal,oldVal){
+         if (newVal > 35) {
+                       this.advice = '短裤 T恤';
+                   }else if (newVal > 20) {
+                       this.advice='穿长袖 长裤';             
+                   }else if (newVal > 10) {
+                       this.advice='穿外套 秋裤';             
+                   }else{
+                    this.advice='羽绒服 大衣';             
+                   }
+     })
+    </script>
+</body>
+</html>

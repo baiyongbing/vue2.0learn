@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello Vue2.0</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue component Props</h1>
+    <div id="app">
+        {{message}}
+        <!-- 1 组件属性传值 -->
+        <bingbing birthday="1992.12.21"></bingbing>
+        <!-- 2 组件绑定属性 -->
+        <bytebai v-bind:byb-git="bybgit" ></bytebai>
+    </div>
+    <script type="text/javascript">
+
+       var app = new Vue({
+           el:"#app", 
+           data:{
+               message:"hello world",
+               bybgit:"https://github.com/baiyongbing"
+           },
+        //    局部在里边
+        components:{
+            'bingbing':{
+                template:`<div style="color: blue;">bingbing {{birthday}} 出生的</div>`,
+                // 3 组件添加属性
+                props:[
+                    'birthday'
+                ]
+            },
+            'bytebai':{
+                template:`<div style="color: red;">byte github is {{bybGit}}</div>`,
+                props:[
+                    'bybGit'
+                ]
+            }
+
+        }
+       })
+    </script>
+</body>
+</html>

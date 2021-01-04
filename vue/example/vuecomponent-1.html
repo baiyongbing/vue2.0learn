@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello Vue2.0</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue component1</h1>
+    <div id="app">
+        {{message}}
+        <bytebai></bytebai>
+        <bingbing></bingbing>
+    </div>
+    <script type="text/javascript">
+       // 1 全局在外部
+   
+   Vue.component('bytebai',{
+       template:`<div style="color: red;">我是全局组件ByteBai</div>`
+   });
+       var app = new Vue({
+           el:"#app",
+           data:{
+               message:"hello world"
+           },
+        //  2 局部在里边
+        components:{
+            'bingbing':{
+                template:`<div style="color: blue;">我是局部组件BingBing</div>`
+            }
+        }
+       })
+    </script>
+</body>
+</html>

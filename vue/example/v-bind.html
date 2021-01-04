@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello Vue2.0</title>
+    <script type="text/javascript" style="width: 300" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-bind 标签属性绑定</h1>
+    <div id="app">
+        <img :src="imgUrl" alt="">
+        <p :class="isOK?classA:classB">Hope is a good thing maybe the best thing in this world</p>
+        <input type="checkbox" id="isOK" v-model="isOK">
+        <label for="isOK"></label>
+    </div>
+    <style>
+        .colorred{
+            color: red;
+            font-size: 10;
+        }
+        .font20{
+            color: blue;
+            font-size: 20;
+        }
+    </style>
+    <script type="text/javascript">
+       var app = new Vue({
+           el:"#app",
+           data:{
+               classA:'colorred',
+               classB:'font20',
+               isOK:true,
+               imgUrl:"https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fwx2.sinaimg.cn%2Fcrop.0.0.1928.1072%2F0033ImPzly1gldqv5ydg0j61hk0u0qv602.jpg&refer=http%3A%2F%2Fwx2.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1611712798&t=8030167a4d0e9c1219545c1192e3e0d1"
+           }
+       })
+    </script>
+</body>
+</html>

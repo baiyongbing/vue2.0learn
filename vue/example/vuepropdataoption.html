@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello Vue2.0</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue PropsData 传值</h1>
+    
+     <header id="vueheader"></header>
+
+     <script type="text/javascript">
+        var my_header = Vue.extend({
+            template:`<div style="color: red;font-size: 20;">{{message}} --- {{author}}</div>`,
+            data() {
+                return {
+                    message:"Hope is a goodthing maybe the best thing in this world"
+                }
+            },
+            props:[
+                'author'
+            ]
+        }); 
+        // 必须分号
+        // extend 传值
+        new my_header({propsData:{author:'baiyongbing'}}).$mount('header');
+    </script>
+</body>
+
+</html>

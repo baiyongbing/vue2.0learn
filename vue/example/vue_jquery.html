@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3.0</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+       <p>{{count}}</p>
+       <br>
+       <button @click="addcount()">增加</button>
+    </div>
+    <script text="text/javascript">
+        var app = new Vue({
+            el:'#app',
+            data:{
+               count:0
+            },
+            methods: {
+                addcount:function(){
+                    this.count ++
+                }
+            },
+        })
+    </script>
+    
+</body>
+</html>

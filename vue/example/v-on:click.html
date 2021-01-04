@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello Vue2.0</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        比赛得分: {{point}}
+        <hr>
+        <button v-on:click="addpoint">加分</button>
+        <button @click="increatepoint">减分</button>
+        <hr>
+        <input type="text" v-on:keyup.enter = "addinputNum"  v-model="inpoutNum">
+    </div>
+    <script type="text/javascript">
+       var app = new Vue({
+           el:"#app",
+           data:{
+               point:0,
+               inpoutNum:2
+           },
+           methods:{
+               addpoint:function(){
+                   this.point++;
+               },
+               increatepoint:function(){
+                if (this.point > 0) {
+                    this.point--;
+                }
+               },
+               addinputNum:function(){
+                  this.point += parseInt(this.inpoutNum);
+               }
+           }
+       })
+    </script>
+</body>
+</html>

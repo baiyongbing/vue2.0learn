@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello Vue2.0</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>v-for 循环产生控件</h1>
+    <div id="app">
+        <ol>
+            <li v-for="item in computedItems">
+                {{item}}
+            </li>
+        </ol>
+        <hr>
+        <ul>
+            <li v-for="(language,index) in ProgramLaunges"> 
+                 <!-- index 必须在item 以后 -->
+               {{index}}: {{language.name}} 在 {{language.time}} 学习这门技术
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+       var app = new Vue({
+           el:"#app",
+           data:{
+               items:[
+                89,19,15,76,7,29,32,10
+               ],
+               ProgramLaunges:[
+                   {name:"React",time:"2019"},
+                   {name:"flutter",time:"2020"},
+                   {name:"Vue",time:"2019"},
+                   {name:"Objective-C",time:"2015"},
+               ]
+           },
+           computed:{
+               computedItems:function(){
+                   return this.items.sort(sortNum);
+               }
+           }
+       })
+       function sortNum(a,b){
+            return a-b;
+       }
+    </script>
+</body>
+</html>

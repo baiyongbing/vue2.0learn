@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hello Vue2.0</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue directive 自定义指令</h1>
+    <div id="app">
+        <div v-text="number" v-bytebai="color"></div>
+        <button v-on:click="addNum">增加</button>
+    </div>
+    <div>
+        <button onclick="unbind()">解绑</button>
+    </div>
+    <script type="text/javascript">
+       
+       function unbind(){
+          app.$destroy(); 
+       }
+       
+       Vue.directive("bytebai",
+    //    function(element,binding){
+    //       console.log(element);
+    //       element.style = "color:"+binding.value;
+    //    }
+        {
+            // 绑定
+          bind:function(el,binding){ 
+             el.style = "color:"+binding.value;
+             console.log("1-bind");
+          },
+        //   插入节点
+          inserted:function(){
+            console.log("2-inserted");
+          },
+          update:function() {
+            console.log("3-update");
+          },
+          componentUpdated:function(){
+            console.log("4-componentUpdated");
+          },
+          unbind:function(){
+            console.log("5-unbind");
+          }
+        }
+       );
+       var app = new Vue({
+           el:"#app",
+           data:{
+               number:12,
+               color:"red",
+           },
+           methods:{
+               addNum:function(){
+                  this.number++;
+               }
+           }
+       })
+    </script>
+</body>
+</html>

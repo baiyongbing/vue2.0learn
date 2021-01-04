@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 2.0</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue Extends Option</h1>
+    <div id="app"> 
+       <!-- 自定义插值 -->
+      @{message}
+      <p>num @{count}</p> 
+      <br>
+      <button @click="addCount()">Add Num</button>
+    </div>
+    <script>
+      
+    //   1 声明扩展
+       var extendObj = {
+           updated() {
+            //    优先级高于原生
+               console.log("扩展 更新");
+           },
+           methods: {
+            //    相同方法名 扩展方法不走
+            addCount:function(){
+                console.log("扩展 增加方法");
+
+                  this.count += 2;
+               }
+           },
+       }
+
+    //    var addConsole = {
+    //        updated:function(){
+    //            console.log("内部混入 数据update " + this.count);
+    //        }
+    //    }
+    //    Vue.mixin({
+    //     //   1 优先级最高
+    //        updated:function(){
+    //           console.log("全局混入 数据update ");
+    //        }
+    //    })
+
+       var app = new Vue({
+           el:'#app',
+           data:{
+               message:"vue 混入",
+               count:10,
+           },
+
+           methods: {
+               addCount:function(){
+                  console.log("原生 增加方法");
+                  this.count += 2;
+               }
+           },
+
+           extends:extendObj,
+
+        //    mixins:[
+        //     //    优先级第二
+        //       addConsole
+        //    ],
+           
+           updated() {
+            //    原生更新优先级最低
+            console.log("原生 更新");
+           },
+           delimiters:['@{','}']
+           
+       })
+    </script>
+</body>
+</html>

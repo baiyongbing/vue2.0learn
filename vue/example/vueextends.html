@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue extends 实例构造器</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>vue extends 实例构造器</h1>
+    <div id="app">
+        <!-- https://github.com/baiyongbing -->
+        <div id="vueextend"></div>
+    </div>
+    <script type="text/javascript">
+       var divextend = Vue.extend({
+           template:"<p><a :href='giturl'>{{gitName}}</a></p>",
+           data() {
+               return {
+                    gitName:"baiyongbing", 
+                    giturl:"https://github.com/baiyongbing"
+               }
+           },
+       });
+    //    extend 挂载在标签
+      new divextend().$mount('#vueextend');
+
+    </script>
+</body>
+</html>

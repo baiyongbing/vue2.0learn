@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 2.0</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue Mixins</h1>
+    <div id="app"> 
+      {{message}}
+      <p>num {{count}}</p>
+      <br>
+      <button @click="addCount()">Add Num</button>
+    </div>
+    <script>
+       var addConsole = {
+           updated:function(){
+               console.log("内部混入 数据update " + this.count);
+           }
+       }
+       Vue.mixin({
+        //   1 优先级最高
+           updated:function(){
+              console.log("全局混入 数据update ");
+           }
+       })
+       var app = new Vue({
+           el:'#app',
+           data:{
+               message:"vue 混入",
+               count:10,
+           },
+           methods: {
+               addCount:function(){
+                  this.count += 2;
+               }
+           },
+           updated:function() {
+            //    原生优先级最低
+               console.log("原生update "+this.count)
+           },
+           mixins:[
+            //    优先级第二
+              addConsole
+           ],
+       })
+    </script>
+</body>
+</html>
