@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3.0</title>
+    <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.js"></script>
+
+</head>
+<body>
+    <div id="app">
+        <h1>vue $mounted 挂载</h1>
+    </div>
+
+    <button onclick="firethehole()">销毁</button>
+    <button onclick="reload()">刷新</button>
+    
+    <script text="text/javascript">
+       var baiextend = Vue.extend({
+        
+           template:`<p>{{message}}</p>`,
+           data() {
+               return {
+                   message:'Hi I am BaiYongbing'
+               }
+           },
+           methods: {
+               
+           },
+           mounted:function(){
+            console.log('mounted -- 挂载')
+           },
+           updated:function() {
+            console.log('updated -- 刷新')
+           },
+           destroy:function(){
+             console.log('destory -- 销毁')
+           }
+       });
+
+       var ex = new baiextend().$mount('#app');
+
+       function firethehole(){
+           ex.$destroy();
+       };
+
+       function reload(){
+           ex.$forceUpdate();
+       };
+
+    </script>
+    
+</body>
+</html>

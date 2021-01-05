@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vue 3.0</title>
     <script type="text/javascript" src="../assets/js/vue.js"></script>
+    <script type="text/javascript" src="../assets/js/jquery.js"></script>
+
 </head>
 <body>
     <div id="app">
@@ -20,10 +22,16 @@
             },
             methods: {
                 addcount:function(){
+                    console.log('内部方法调用');
                     this.count ++
                 }
             },
-        })
+            mounted:function(){
+                $('#app').html('哎呦来');
+            }
+        });
+        app.addcount();
+
     </script>
     
 </body>
