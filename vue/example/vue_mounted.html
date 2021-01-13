@@ -9,13 +9,15 @@
 
 </head>
 <body>
+    
     <div id="app">
         <h1>vue $mounted 挂载</h1>
     </div>
-
+    
     <button onclick="firethehole()">销毁</button>
     <button onclick="reload()">刷新</button>
-    
+    <button onclick="tick()">数据更新</button>
+
     <script text="text/javascript">
        var baiextend = Vue.extend({
         
@@ -34,7 +36,7 @@
            updated:function() {
             console.log('updated -- 刷新')
            },
-           destroy:function(){
+           destroyed:function(){
              console.log('destory -- 销毁')
            }
        });
@@ -44,10 +46,15 @@
        function firethehole(){
            ex.$destroy();
        };
-
        function reload(){
            ex.$forceUpdate();
        };
+       function tick(){
+        ex.message = "update message info ";
+        ex.$nextTick(function(){
+                console.log('message更新完后我被调用了');
+            })
+        };
 
     </script>
     

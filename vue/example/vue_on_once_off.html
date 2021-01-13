@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 2.0</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <h1>Vue On Once Off</h1>
+    <div id="app"> 
+      {{message}}
+      <p>num {{count}}</p>
+      <br>
+      <button @click="addCount()">Add Num</button>
+    </div>
+    
+    <p></p><button onclick="reduce()">Reduce Num</button></p>
+    <p></p><button onclick="reduceonce()">Reduce Once</button></p>
+    <p></p><button onclick="off()">Off</button></p>
+
+    <script>
+       var app = new Vue({
+           el:'#app',
+           data:{
+               message:"vue on",
+               count:10,
+           },
+           methods: {
+               addCount:function(){
+                  this.count += 2;
+               }
+           },
+       });
+       app.$on('reduce',function(){
+           console.log('reduce 执行')
+           this.count --;
+       });
+       app.$once('reduceonce',function(){
+           console.log('reduce 只执行一次');
+           this.count -= 5;
+       });       
+       function reduce(){
+            // 发送方法 emit
+            app.$emit('reduce');
+       };
+       function reduceonce(){
+           app.$emit('reduceonce');
+       };
+       function off(){
+        //    关闭方法
+           app.$off('reduce');  
+       };
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 2.0</title>
+    <script src="../assets/js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+         <h1>Vue Slot</h1>
+         <br>
+         <bytebai>
+             <span slot="name">{{byb.name}}</span>
+             <span slot="skill">{{byb.skill}}</span>
+             <span slot="github">{{byb.github}}</span>
+         </bytebai> 
+    </div>
+    <template id="temp">
+        <div>
+            <p>姓名: <slot name="name"></slot></p>
+            <p>技能: <slot name="skill"></slot></p>
+            <p>github: <slot name="github"></slot></p>
+        </div>
+    </template>
+
+    <script>
+        var bytebai = {
+          template:'#temp'
+        };
+        var app = new Vue({
+            el:'#app',
+            data:{
+               byb:{
+                   name:'白永炳',
+                   skill:'iOS flutter react vue',
+                   github:"https://github.com/"
+               }
+            },
+            components:{
+                'bytebai':bytebai,
+            }
+        })
+    </script>
+    
+</body>
+</html>
